@@ -1,0 +1,24 @@
+{
+  "name": "ju_mech_erp_server_side",
+  "version": "1.0.0",
+  "description": "server side of erp website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JU-Mechanical-ERP/ju_mech_erp_server_side.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JU-Mechanical-ERP/ju_mech_erp_server_side/issues"
+  },
+  "homepage": "https://github.com/JU-Mechanical-ERP/ju_mech_erp_server_side#readme",
+  "dependencies": {
+    "axios": "^1.8.3",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1"
+  }
+}
