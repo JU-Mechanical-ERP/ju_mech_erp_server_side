@@ -1,21 +1,49 @@
 import mongoose from "mongoose";
 
+const OfferSchema = new mongoose.Schema({
+  company: String,
+  position: String,
+  employmentType: String,
+  recruitmentType: String,
+  year: String,
+  package: String,
+  offerLetter: String, // Assuming it stores a file path or URL
+});
+
+const ExamSchema = new mongoose.Schema({
+  name: String,
+  year: String,
+  score: String,
+  hasTraining: Boolean,
+  trainingType: String,
+  trainingMode: String,
+  resultCard: String,
+});
+
+const HigherStudySchema = new mongoose.Schema({
+  programme: String,
+  duration: String,
+  institute: String,
+  country: String,
+});
+
+const StartupSchema = new mongoose.Schema({
+  hasStartup: Boolean,
+  startupDetails: String,
+  interestedInStartup: Boolean,
+  universitySupport: String,
+  externalSupport: String,
+});
+
 const careerProgressionSchema = new mongoose.Schema({
   placement: {
-    placed: Boolean,
-    offers: [
-      { company: String, position: String, employmentType: String, mode: String, year: Number, package: Number, offerLetter: String }
-    ],
-    choiceOfOffer: String
+    isPlaced: Boolean,
+    offers: [OfferSchema],
+    choiceDetails: String,
   },
-  competitiveExams: [{ examName: String, year: Number, score: Number, training: Boolean, result: String }],
-  higherStudies: {
-    programme: String,
-    tenure: Number,
-    institute: String,
-    country: String
-  },
-  startups: [{ name: String, objective: String, investment: String, supportFromUniversity: Boolean }]
+  exams: [ExamSchema],
+  higherStudy: HigherStudySchema,
+  startup: StartupSchema,
 });
 
 export default careerProgressionSchema;

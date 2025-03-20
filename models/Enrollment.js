@@ -4,15 +4,16 @@ const enrollmentDetailsSchema = new mongoose.Schema({
   rollNumber: String,
   section: String,
   programme: String,
-  lateralEntry: Boolean,
-  yearOfAdmission: Number,
-  currentSemester: Number,
-  currentYear: Number,
-  expectedGraduationYear: Number,
+  isLateralEntry: Boolean,
+  admissionYear: String,
+  currentSemester: String,
+  currentYear: String,
+  expectedGraduationYear: String,
   registrationNumber: String,
-  Year: String,
+  registrationYear: String,
   mentorName: String,
-  scholarshipDetails: String
+  hasScholarship: Boolean,
+  scholarshipDetails: String,
 });
 
 export default enrollmentDetailsSchema;

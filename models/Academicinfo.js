@@ -1,12 +1,15 @@
 import mongoose from "mongoose";
 
+const GradeSchema = new mongoose.Schema({
+  semester: Number,
+  sgpa: String,
+  cgpa: String,
+});
+
 const academicInfoSchema = new mongoose.Schema({
-  grades: { sgpa: [Number], cgpa: Number },
-  marksheets: [{ url: String }],
-  courseDetails: {
-    professionalElectives: [String],
-    openElectives: [String]
-  },
+  grades: [GradeSchema],
+  selectedProfessional: [String],
+  selectedOpen: [String],
   projectDetails: [
     {
       title: String,

@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 const miscellaneousSchema = new mongoose.Schema({
-  recommendations: [{ String }],
-  learnings: String,
-  statementOfPurpose: String,
-  vision: String
+  lor: String,
+  keyLearnings: String,
+  sop: String,
+  vision: String,
 });
 
 export default miscellaneousSchema;

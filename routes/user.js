@@ -1,8 +1,9 @@
 import express from 'express';
 import upload from '../helpers/multer.js';
-import { addUser } from '../controllers/user.js';
+import { login, signup, updateUser } from '../controllers/user.js';
 
 const router = express.Router();
-
-router.post('/addetails', addUser);
+router.post('/login', login);
+router.post('/signup', signup);
+router.post('/updatedetails', updateUser);
 export default router;

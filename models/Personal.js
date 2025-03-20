@@ -2,25 +2,25 @@ import mongoose from "mongoose";
 
 const personalInfoSchema = new mongoose.Schema({
   name: String,
-  dateOfBirth: Date,
+  dob: Date,
   gender: String,
   category: String,
-  differentlyAbled: Boolean,
-  contactDetails: {
-    mobileNo: String,
-    whatsappNo: String,
-    email: String,
-    alternateEmail: String
-  },
-  address: {
-    present: String,
-    permanent: String,
-    state: String
-  },
-  emergencyContacts: [{ name: String, relation: String, phone: String }],
+  isPwd: Boolean,
+  mobileNo: String,
+  whatsappNo: String,
+  email: String,
+  alternateEmail: String,
+  presentAddress: String,
+  presentState: String,
+  permanentAddress: String,
+  permanentState: String,
+  emergencyContactName: String,
+  emergencyContactNumber: String,
+  emergencyContactRelation: String,
   nationality: String,
-  identification: { aadhar: String, passport: String },
-  familyIncome: Number
+  idType: String,
+  idNumber: String,
+  familyIncome: String,
 });
 
 export default personalInfoSchema;
