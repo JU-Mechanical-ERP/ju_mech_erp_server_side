@@ -96,18 +96,7 @@ export const updateUser = async (req, res) => {
         user.curricularInfo=curricularInfo;
         user.careerProgression=careerProgression;
         user.miscellaneous=miscellaneous;
-        
-        // // Create a new user instance
-        // const newUser = new User({
-        //     personalInfo,
-        //     enrollmentDetails,
-        //     academicBackground,
-        //     academicInfo,
-        //     careerProgression,
-        // });
-        
-        
-        // Save user to database
+
         const newUser=await user.save();
         
         res.status(201).json({  user: newUser });
