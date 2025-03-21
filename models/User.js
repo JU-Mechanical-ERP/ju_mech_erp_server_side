@@ -3,8 +3,8 @@ import personalInfoSchema from "./Personal.js";
 import enrollmentDetailsSchema from "./Enrollment.js";
 import academicBackgroundSchema from "./Background.js";
 import academicInfoSchema from "./Academicinfo.js";
-import careerProgressionSchema from "./career.js";
-import miscellaneousSchema from "./misc.js";
+import careerProgressionSchema from "./Career.js";
+import miscellaneousSchema from "./Misc.js";
 //import CoCurricular from "./Curricular.js";
 import CoCurricularSchema from "./Curricular.js";
 
