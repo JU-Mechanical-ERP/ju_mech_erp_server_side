@@ -1,9 +1,9 @@
-import User from '../models/User.js';
+import User from "../models/UserDetailsModel/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 import dotenv from "dotenv"
-import Request from '../models/Request.js';
+import Request from '../models/UserDetailsModel/Request.js';
 dotenv.config();
 // Secret key for JWT (store this in an environment variable)
 const JWT_SECRET = process.env.JWT; 
