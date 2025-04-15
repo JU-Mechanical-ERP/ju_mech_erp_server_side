@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// Personal information schema for Student
 const personalInfoSchema = new mongoose.Schema({
   name: String,
   dob: Date,

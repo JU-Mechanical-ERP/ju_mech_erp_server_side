@@ -9,7 +9,8 @@ import miscellaneousSchema from "./Misc.js";
 import CoCurricularSchema from "./Curricular.js";
 
 const userSchema = new mongoose.Schema(
-  { name:String,
+  {
+     name:String,
     email:String,
     password:String,
     personalInfo: personalInfoSchema,
