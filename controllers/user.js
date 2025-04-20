@@ -44,9 +44,13 @@ export const signup = async (req, res) => {
     const user = await newUser.save();
 
     // Generate JWT token
-    const token = jwt.sign({ userId: user._id, email: email }, JWT_SECRET, {
-      expiresIn: "1d", // Token valid for 1 day
-    });
+    const token = jwt.sign(
+      { userId: user._id, name: fullName, email: email },
+      JWT_SECRET,
+      {
+        expiresIn: "1d", // Token valid for 1 day
+      }
+    );
 
     res.status(201).json({ token, user: user });
   } catch (error) {
@@ -59,14 +63,14 @@ export const signup = async (req, res) => {
   }
 };
 
-// Login Controller
+//? Login Controller
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Find the user by email
+    //^ Find the user by email
     const user = await User.findOne({
-      "personalInfo.contactDetails.email": email,
+      email: email,
     });
     if (!user) {
       return res
@@ -74,7 +78,7 @@ export const login = async (req, res) => {
         .json({ success: false, message: "Invalid email or password" });
     }
 
-    // Check password
+    //^ Check password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res
@@ -83,9 +87,13 @@ export const login = async (req, res) => {
     }
 
     // Generate JWT token
-    const token = jwt.sign({ userId: user._id, email: email }, JWT_SECRET, {
-      expiresIn: "1d", // Token valid for 1 day
-    });
+    const token = jwt.sign(
+      { userId: user._id, name: user.name, email: email },
+      JWT_SECRET,
+      {
+        expiresIn: "1d", // Token valid for 1 day
+      }
+    );
 
     res.status(200).json({ token, user: user });
   } catch (error) {
