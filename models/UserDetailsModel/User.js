@@ -8,23 +8,22 @@ import careerProgressionSchema from "./Career.js";
 import miscellaneousSchema from "./Misc.js";
 import CoCurricularSchema from "./Curricular.js";
 
-
 //? overall schema of the user
 const userSchema = new mongoose.Schema(
   {
-    name:String,
-    email:String,
-    password:String,
+    name: String,
+    email: String,
+    password: String,
     personalInfo: personalInfoSchema,
     enrollmentDetails: enrollmentDetailsSchema,
     academicBackground: academicBackgroundSchema,
     academicInfo: academicInfoSchema,
-    curricularInfo:CoCurricularSchema,
+    curricularInfo: CoCurricularSchema,
     careerProgression: careerProgressionSchema,
-    miscellaneous: miscellaneousSchema
+    miscellaneous: miscellaneousSchema,
   },
   { timestamps: true }
 );
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema, "student_details");
 export default User;

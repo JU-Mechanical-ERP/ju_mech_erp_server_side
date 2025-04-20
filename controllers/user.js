@@ -1,7 +1,8 @@
-import User from "../models/UserDetailsModel/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+//? Importing the necessary models
+import User from "../models/UserDetailsModel/User.js";
 import Request from "../models/UserDetailsModel/Request.js";
 dotenv.config();
 // Secret key for JWT (store this in an environment variable)
@@ -12,10 +13,15 @@ export const signup = async (req, res) => {
   try {
     //getting sign up details
     const { fullName, email, password } = req.body;
-    console.log(req.body);
-    // Check if the user already exists
+    //^ check if the user has provided all the required details
+    if (!fullName || !email || !password) {
+      return res
+        .status(400)
+        .json({ success: false, message: "All fields are required" });
+    }
+    //^ Check if the user already exists
     const existingUser = await User.findOne({
-      "personalInfo.contactDetails.email": email,
+      email: email,
     });
     if (existingUser) {
       return res
@@ -30,7 +36,7 @@ export const signup = async (req, res) => {
     // Create a new user
     const newUser = new User({
       name: fullName,
-      email,
+      email: email,
       password: hashedPassword,
     });
 
@@ -45,13 +51,11 @@ export const signup = async (req, res) => {
     res.status(201).json({ token, user: user });
   } catch (error) {
     console.log(error);
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error signing up",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error signing up",
+      error: error.message,
+    });
   }
 };
 
@@ -85,13 +89,11 @@ export const login = async (req, res) => {
 
     res.status(200).json({ token, user: user });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Error logging in",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Error logging in",
+      error: error.message,
+    });
   }
 };
 
