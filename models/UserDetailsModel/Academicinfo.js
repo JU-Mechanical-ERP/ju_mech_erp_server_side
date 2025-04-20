@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
-const GradeSchema = new mongoose.Schema({
-  semester: Number,
-  sgpa: String,
-  cgpa: String,
-});
-
 const academicInfoSchema = new mongoose.Schema({
-  grades: [GradeSchema],
+  grades: [
+    {
+      semester: Number,
+      sgpa: String,
+      cgpa: String,
+    }
+  ],
   selectedProfessional: [String],
   selectedOpen: [String],
   projectDetails: [
@@ -23,7 +23,7 @@ const academicInfoSchema = new mongoose.Schema({
       institute: String,
       sdgConnection: Boolean,
       outcome: String,
-      certificates: [{ url: String }],
+      certificate: [{ url: String }],
     },
   ],
   publications: {
@@ -52,7 +52,7 @@ const academicInfoSchema = new mongoose.Schema({
         details: String,
         applno: String,
         patno: String,
-        patcert: String,
+        certificate: String,
       },
     ],
   },
@@ -68,7 +68,7 @@ const academicInfoSchema = new mongoose.Schema({
       curriculumPart: Boolean,
       creditTransfer: Boolean,
       gradeCard: String,
-      cert: String,
+      certificate: String,
     },
   ],
   trainings: [
@@ -78,7 +78,7 @@ const academicInfoSchema = new mongoose.Schema({
       mode: String,
       noCredits: String,
       organizedBy: String,
-      cert: String,
+      certificate: String,
     },
   ],
   interns: [
@@ -88,96 +88,10 @@ const academicInfoSchema = new mongoose.Schema({
       mode: String,
       noCredits: String,
       organizedBy: String,
-      cert: String,
+      certificate: String,
     },
   ],
   remedial: [{ num: Number, name: String }],
-  coCurricular: {
-    clubs: [
-      {
-        type: String,
-        name: String,
-        role: String,
-        accolades: String,
-        cert: String,
-      },
-    ],
-    competitions: [
-      {
-        name: String,
-        organizedBy: String,
-        nature: String,
-        year: Number,
-        role: String,
-        outcome: String,
-        cert: String,
-        teammates: [{ String }],
-      },
-    ],
-    leadershipRoles: [{ title: String, details: String }],
-    sports: [
-      {
-        event: String,
-        level: String,
-        venue: String,
-        year: Number,
-        result: String,
-      },
-    ],
-  },
-  sports: [
-    {
-      name: String,
-      level: String,
-      outside: Boolean,
-      year: String,
-      venue: String,
-      result: String,
-      achievements: String,
-      cert: String,
-    },
-  ],
-  skills: {
-    technical: [String],
-    certifications: [String],
-    softSkills: [String],
-    languages: [
-      {
-        name: String,
-        mode: String,
-        duration: String,
-        fees: Boolean,
-        cert: String,
-      },
-    ],
-    coding: [
-      {
-        name: String,
-        mode: String,
-        duration: String,
-        fees: Boolean,
-        cert: String,
-      },
-    ],
-  },
-  socialActivities: {
-    nss: Boolean,
-    extensionActivities: [
-      { name: String, details: String, date: Date, venue: String },
-    ],
-    seminars: [
-      { name: String, venue: String, date: Date, organizedBy: String },
-    ],
-  },
-  seminar: [
-    {
-      name: String,
-      venue: String,
-      date: String,
-      organizedBy: String,
-      cert: String,
-    },
-  ],
 });
 
 export default academicInfoSchema;

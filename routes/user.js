@@ -3,9 +3,10 @@ import upload from '../helpers/multer.js';
 import { createreq, getUserRequests, login, signup, updateUser } from '../controllers/user.js';
 
 const router = express.Router();
-router.post('/login', login);
-router.post('/signup', signup);
-router.post('/updatedetails', updateUser);
-router.post('/createreq', createreq);
+//? backend routes
+router.post('/login', login); // for user login
+router.post('/signup', signup); // for user signup
+router.post('/updatedetails', updateUser); // for updating details
+router.post('/createreq', createreq); 
 router.post('/getreqs', getUserRequests);
 export default router;
