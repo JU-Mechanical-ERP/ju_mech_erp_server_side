@@ -12,7 +12,9 @@ import CoCurricularSchema from "./Curricular.js";
 const userSchema = new mongoose.Schema(
   {
     name: String,
+    mobileNo: String,
     email: String,
+    rollNumber: String,
     password: String,
     personalInfo: personalInfoSchema,
     enrollmentDetails: enrollmentDetailsSchema,

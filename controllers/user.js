@@ -12,9 +12,9 @@ const JWT_SECRET = process.env.JWT;
 export const signup = async (req, res) => {
   try {
     //getting sign up details
-    const { fullName, email, password } = req.body;
+    const { fullName, mobileNo, email, rollNumber, password } = req.body;
     //^ check if the user has provided all the required details
-    if (!fullName || !email || !password) {
+    if (!fullName || !mobileNo || !email || !rollNumber || !password) {
       return res
         .status(400)
         .json({ success: false, message: "All fields are required" });
@@ -34,10 +34,21 @@ export const signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Create a new user
-    const newUser = new User({
+    const personalInfo = {
       name: fullName,
       email: email,
+    };
+    const enrollmentDetails = {
+      rollNumber: rollNumber,
+    };
+    const newUser = new User({
+      name: fullName,
+      mobileNo: mobileNo,
+      email: email,
+      rollNumber: rollNumber,
       password: hashedPassword,
+      personalInfo: personalInfo,
+      enrollmentDetails: enrollmentDetails,
     });
 
     // Save user to database
@@ -121,7 +132,7 @@ export const getPrimaryUserDetails = async (req, res) => {
 
     // Find the user by ID and select only the required fields
     const user = await User.findById(userId).select(
-      "name email personalInfo enrollmentDetails academicBackground academicInfo curricularInfo careerProgression miscellaneous"
+      "name email mobileNo rollNumber personalInfo enrollmentDetails academicBackground academicInfo curricularInfo careerProgression miscellaneous"
     );
 
     if (!user) {
